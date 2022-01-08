@@ -15,7 +15,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { v4 as uuidv4 } from 'uuid';
 
-const style = {
+const style = { //will make <Modal/> appear in the center of the screen
   position: 'absolute',
   top: '50%',
   left: '50%',
