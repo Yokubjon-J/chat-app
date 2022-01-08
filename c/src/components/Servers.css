@@ -1,0 +1,84 @@
+.servers {
+    width: 71px;
+    /* width: 73px; */
+    height: 100vh;
+    background-color: rgb(72, 61, 139);
+}
+
+.list-item{
+    position: relative;
+    /* overflow: hidden; */
+    width: 100%;
+}
+
+.pill{
+    position: absolute;
+    left:0;top:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0; padding: 0;
+    /* justify-content: flex-start; */
+}
+
+.item-2hkk8m{
+    position: absolute;
+    display: block;
+    width: 8px;
+    border-radius: 0 4px 4px 0;
+    /* margin-left: -4px; */
+    background-color: darkslategray;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-flex; /*before, it was "inline-block*/
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px dotted black; /*it'll be overwritten*/
+    min-width: 50px; min-height: 50px;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: inset 0 0 7px 4px rgba(0, 0, 0, 0.8);
+    background-color: #5F9EA0;
+    margin: 2px 0;
+}
+  
+  .tooltip .tooltiptext {
+      margin-left: 17px;
+    visibility: hidden;
+    /* display:none; */
+    opacity: 0; /**/
+    transition: visibility 0s, opacity 0.5s linear; /**/
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 110%;
+    margin-top: 15px;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+  }
+  .tooltip:hover .tooltiptext {
+    z-index: 6; /*above Don Pedro Comm*/
+    visibility: visible;
+    /* display: block; */
+    /* transition: visibility  0s linear 1s;*/
+    opacity: 1;
+  }
