@@ -29,15 +29,16 @@ const style = { //will make <Box/> appear in the center of the screen
 
 const Channels = () => {
     let params = useParams();
+    let globalVarCategoryName;
     const [open, setOpen] = useState(false);
     const [newChannelName, setNewChannelName] = useState(null);
+    const [categoryNameAndId, setCategoryNameAndId] = useState([]);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const handleCreateChannel = () => {
         const index = servers.findIndex(s => s.id == params.serverId);
-        const categoryName = servers.filter(s => s.id == params.serverId)[0].channels[index].category;
-        console.log("catname: ", categoryName, "index: ", index);
-        servers[index].channels.push({name: newChannelName, category: categoryName, id: uuidv4()});
+        console.log("glob: ", categoryNameAndId);
+        servers[index].channels.push({name: newChannelName, category: categoryNameAndId[0], id: uuidv4()});
         console.log("servers after push: ", servers)
         handleClose();
     }
@@ -135,8 +136,9 @@ const Channels = () => {
                             <h5 style={{display: "flex", alignItems: "center", 
                                 justifyContent: "center",
                                 cursor:"pointer",
-                            }}
+                            }} id={c.id}
                             onClick={(e) => {
+                                setCategoryNameAndId([Object.keys(c)[0], c[Object.keys(c)[0]][0].id]);
                                 const el = e.currentTarget.nextElementSibling; //e.target isn't suitable
                                 if (e.currentTarget.children[1].contains(e.target)) return;//refers to "just_a_container" div
                                 el.style.display === "block" ? el.style.display = "none" : el.style.display = "block"
