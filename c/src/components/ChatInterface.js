@@ -35,8 +35,8 @@ const ChatInterface = ({style}) => { //why exactly "style"? because HOC will add
   //   }
   // };
   return (
-    <div style={style}> {/*why exactly "style"? because HOC will add a prop called "style". names must match it here*/}
-      <div className='three-fields'>689</div>
+    <div style={style} className="message-field"> {/*why exactly "style"? because HOC will add a prop called "style". names must match it here*/}
+      <div className='vestigial'>689</div>
       <div className="chat-div">
         <Input
           ref={inputEl}

@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { v4 as uuidv4 } from 'uuid';
 
 const style = {
   position: 'absolute',
@@ -32,6 +33,14 @@ const Channels = () => {
     const [newChannelName, setNewChannelName] = useState(null);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const handleCreateChannel = () => {
+        const index = servers.findIndex(s => s.id == params.serverId);
+        const categoryName = servers.filter(s => s.id == params.serverId)[0].channels[index].category;
+        console.log("catname: ", categoryName, "index: ", index);
+        servers[index].channels.push({name: newChannelName, category: categoryName, id: uuidv4()});
+        console.log("servers after push: ", servers)
+        handleClose();
+    }
     const [ display, setDisplay ] = useState('none')
     let [selectedServer, setSelectedServer] = useState(servers.filter(s => s.id == params.serverId)) //'d be updated whenever a new channel is created
     function handleClick() {
@@ -49,7 +58,7 @@ const Channels = () => {
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [display]);
+    }, [display, servers]);
     useEffect(() => {
         setSelectedServer(servers.filter(s => s.id == params.serverId));
         return () => {
@@ -69,11 +78,6 @@ const Channels = () => {
             channelCategories.push(category);
         }
         return channelCategories;
-    }
-
-    const handleButtonClickInModal = (e) => {
-        handleClose();
-        console.log("new chn is: ", newChannelName);
     }
 
     return (
@@ -120,7 +124,7 @@ const Channels = () => {
                         variant="outlined"
                         onChange={(e) => setNewChannelName(e.target.value)}/>
                     <Button sx={{marginTop:"5px"}} variant="outlined" type="submit"
-                        onClick={(e)=>handleButtonClickInModal(e)}>Create</Button>
+                        onClick={(e)=>handleCreateChannel()}>Create</Button>
                 </Box>
             </Modal>
             <div>

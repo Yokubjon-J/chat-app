@@ -6,7 +6,8 @@
       /* width: 100%; instead of "width", I used "left" & "right", cz "width:100%" will cause a problem */  
       display:flex;
       overflow: hidden;
-      /* background-color: rgb(118, 138, 78); */
+      background-color: white;
+      border-radius: 10px;
 }
 
 .chat-wrapper { /*it will contain "chat-div" as expected*/
@@ -14,4 +15,8 @@
       width: calc(100vw - 239px - 239px - 71px );
       box-sizing: border-box;
       position: relative;
+}
+
+.message-field {
+      background-color: #B3B6B7;
 }
