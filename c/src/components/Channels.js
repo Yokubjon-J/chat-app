@@ -34,13 +34,28 @@ const Channels = () => {
     const [newChannelName, setNewChannelName] = useState(null);
     const [categoryNameAndId, setCategoryNameAndId] = useState([]);
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleClose = () => {
+        setOpen(false);
+        if (changeChannelName.current === true) changeChannelName.current = false;
+    }
     const handleCreateChannel = () => {
         const index = servers.findIndex(s => s.id == params.serverId);
         console.log("glob: ", categoryNameAndId);
         servers[index].channels.push({name: newChannelName, category: categoryNameAndId[0], id: uuidv4()});
         console.log("servers after push: ", servers)
         handleClose();
+    }
+    const handleChangeCategoryName = () => {
+        const index = servers.findIndex(s => s.id == params.serverId);
+        servers[index].channels.forEach((c, i) => {//mutates
+            //if (c.category === categoryNameAndId[0]) servers[index].channels.splice(i, 1) //mutates, at position i, remove 1 elem
+            if (c.category === categoryNameAndId[0]) c.category = newChannelName; //here, newChannelName is a new category name
+        });
+        handleClose();
+    }
+    const handleChangeName = () => {
+        handleOpen();
+        changeChannelName.current=true;
     }
     const [ display, setDisplay ] = useState('none')
     let [selectedServer, setSelectedServer] = useState(servers.filter(s => s.id == params.serverId)) //'d be updated whenever a new channel is created
@@ -49,13 +64,14 @@ const Channels = () => {
     }
     const arrowRef = useRef(null);
     const dropdownRef = useRef(null);
-    let changingDropdownRef = useRef(null);
+    const changingDropdownRef = useRef(null);
+    const changeChannelName = useRef(false);
     function handleClickOutside(e) {
         if (display ==="block" && arrowRef.current != e.target && !dropdownRef.current.contains(e.target)) setDisplay('none');
         if (changingDropdownRef.current != null && !changingDropdownRef.current.contains(e.target) && !changingDropdownRef.current.parentNode.contains(e.target)) {changingDropdownRef.current.nextElementSibling.style.display = "none"; changingDropdownRef.current = null}
     }
     useEffect(() => {
-        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("mousedown", handleClickOutside); console.log('rendered')
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
@@ -125,7 +141,8 @@ const Channels = () => {
                         variant="outlined"
                         onChange={(e) => setNewChannelName(e.target.value)}/>
                     <Button sx={{marginTop:"5px"}} variant="outlined" type="submit"
-                        onClick={(e)=>handleCreateChannel()}>Create</Button>
+                        onClick={()=> changeChannelName.current === false ? handleCreateChannel() : handleChangeCategoryName()}>
+                            {changeChannelName.current === true ? "Change" : "Create"}</Button>
                 </Box>
             </Modal>
             <div>
@@ -158,8 +175,8 @@ const Channels = () => {
                                     <Paper>
                                         <MenuList>
                                             <MenuItem onClick={handleOpen}>Create a channel</MenuItem>
-                                            <MenuItem>Change category name</MenuItem>
-                                            <MenuItem>Delete this category</MenuItem>
+                                            <MenuItem onClick={handleChangeName}>Change category name</MenuItem>
+                                            <MenuItem style={{color:"red"}}>Delete this category</MenuItem>
                                         </MenuList>
                                     </Paper>
                                 </div>
