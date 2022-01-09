@@ -36,7 +36,7 @@ const Channels = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
         setOpen(false);
-        if (changeChannelName.current === true || changeChannelName.current === "delete") changeChannelName.current = false;
+        if (changeChannelName.current === true) changeChannelName.current = false;
     }
     const handleCreateChannel = () => {
         const index = servers.findIndex(s => s.id == params.serverId);
@@ -58,12 +58,12 @@ const Channels = () => {
         changeChannelName.current=true;
     }
     const handleDeleteCategory = () => {
-        handleOpen();
         const index = servers.findIndex(s => s.id == params.serverId);
         servers[index].channels.forEach((c, i) => {//mutates
             if (c.category === categoryNameAndId[0]) servers[index].channels.splice(i, 1) //mutates, at position i, remove 1 elem
         });
-        handleClose();
+        changingDropdownRef.current.nextElementSibling.style.display = "none";//closes <Paper/> dropdowwn menu (containing "Delete this category")
+        changingDropdownRef.current = null
     }
     const [ display, setDisplay ] = useState('none')
     let [selectedServer, setSelectedServer] = useState(servers.filter(s => s.id == params.serverId)) //'d be updated whenever a new channel is created
