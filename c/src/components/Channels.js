@@ -192,7 +192,7 @@ const Channels = () => {
                                 </div>
                             </h5>
                             <div style={{display: "block"}}>
-                                <ChannelNameContainer channelNames={c[Object.keys(c)[0]]}/>
+                                <ChannelNameContainer channelNames={c[Object.keys(c)[0]]} />
                             </div>
                         </div>
                     )
