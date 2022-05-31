@@ -19,9 +19,20 @@
   "homepage": "https://github.com/Yokubjon-J/chat-app#readme",
   "dependencies": {
     "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "socket.io-client": "^4.5.1",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
+    "babel-loader": "^8.2.5",
+    "react-refresh": "^0.13.0",
+    "webpack": "^5.72.1",
+    "webpack-hot-middleware": "^2.25.1"
   }
 }
