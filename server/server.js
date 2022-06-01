@@ -1,9 +1,9 @@
 import express from 'express';
-import devBundle from './devBundle'
+import devBundle from './devBundle.js'
 const app = express();
 devBundle.compile(app);
 
-import template from './../template'
+import template from './../template.js'
 app.get('/', (req, res) => {
     res.status(200).send(template())
 })

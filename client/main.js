@@ -1,4 +1,4 @@
 import React from 'react';
-import { render } from 'react-dom';
-import HelloWorld from './HelloWorld';
-render(<HelloWorld/>, document.getElementById('root'));
+import ReactDOM from 'react-dom';
+import HelloWorld from './HelloWorld.js';
+ReactDOM.render(<HelloWorld />, document.getElementById('root'));

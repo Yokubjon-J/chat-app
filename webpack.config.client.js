@@ -1,6 +1,6 @@
-import path from 'path';
-import webpack from 'webpack';
-import webpackPlugin from './webpack-plugin';
+const path = require("path");
+const webpack = require('webpack');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const CURRENT_WORKING_DIR = process.cwd()
 const config = {
     name: "browser",
@@ -20,15 +20,18 @@ const config = {
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                use: ['babel-loader']
+                loader: 'babel-loader',
+                options: {
+                    plugins: ['react-refresh/babel'],
+                },
             }
         ]
     },
-    plugins: [...[true && new webpack.HotModuleReplacementPlugin()].filter(Boolean), webpackPlugin],
+    plugins: [new ReactRefreshWebpackPlugin()],
     resolve: {
         alias: {
             'react-dom': '@hot-loader/react-dom'
         }
     }
 }
-export default config;
+module.exports = config;
