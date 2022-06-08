@@ -32,9 +32,11 @@ const config = {
     },
     plugins: [new ReactRefreshWebpackPlugin()],
     resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css', '.scss'],
+        modules: ['client', 'node_modules'], // Assuming that your files are inside the src dir
         alias: {
             'react-dom': '@hot-loader/react-dom'
-        }
+        },
     }
 }
 module.exports = (_, argv) => {
