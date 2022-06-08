@@ -27,6 +27,9 @@ const config = {
             }
         ]
     },
+    devServer:{
+        hot: true,
+    },
     plugins: [new ReactRefreshWebpackPlugin()],
     resolve: {
         alias: {
@@ -34,4 +37,10 @@ const config = {
         }
     }
 }
-module.exports = config;
+module.exports = (_, argv) => {
+    const mode = argv.mode;
+    const isDevelopment = mode === "development";
+    return {
+      config
+    }
+  };;
