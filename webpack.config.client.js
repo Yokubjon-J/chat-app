@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require('webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const CURRENT_WORKING_DIR = process.cwd()
+const CURRENT_WORKING_DIR = process.cwd(); //console.log("xfdcx:\n", path.join(CURRENT_WORKING_DIR, 'client/main.js'));
 const config = {
     name: "browser",
     mode: "development",
@@ -21,19 +21,19 @@ const config = {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
-                options: {
-                    plugins: ['react-refresh/babel'],
-                },
+                // options: {
+                //     plugins: ['react-refresh/babel'],
+                // },
             }
         ]
     },
     devServer:{
         hot: true,
     },
-    plugins: [new ReactRefreshWebpackPlugin()],
+    plugins: [new ReactRefreshWebpackPlugin(), 'react-refresh/babel'],
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css', '.scss'],
         modules: ['client', 'node_modules'], // Assuming that your files are inside the src dir
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css', '.scss'],
         alias: {
             'react-dom': '@hot-loader/react-dom'
         },
@@ -45,4 +45,4 @@ module.exports = (_, argv) => {
     return {
       config
     }
-  };;
+  };
