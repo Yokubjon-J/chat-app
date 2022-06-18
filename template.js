@@ -3,7 +3,7 @@ export default () => {
         <html lang="en">
             <head>
                 <meta charset="utf-8">
-                <title>MERN Kickstart</title>
+                <title>MERN Chat</title>
             </head>
             <body>
                 <div id="root"></div>
