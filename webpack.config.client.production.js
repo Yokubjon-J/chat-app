@@ -23,4 +23,10 @@ const config = {
         ]
     }
 }
-module.exports = config;
+module.exports = (_, argv) => {
+    const mode = argv.mode;
+    const isDevelopment = mode === "production";
+    return {
+      config
+    }
+};

@@ -16,6 +16,18 @@ const config = {
         publicPath: '/dist/',
         clean: true,
     },
+    optimization: {
+        runtimeChunk: 'single',
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all',
+                },
+            },
+        },
+    },
     module: {
         rules: [
             {
@@ -40,7 +52,8 @@ const config = {
 module.exports = (_, argv) => {
     const mode = argv.mode;
     const isDevelopment = mode === "development";
+    // process.env.NODE_ENV = "development";
     return {
       config
     }
-  };
+};

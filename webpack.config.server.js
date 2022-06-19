@@ -27,8 +27,5 @@ const config = {
         static: './dist',
         hot: true,
     },
-    // optimization: {
-    //     runtimeChunk: 'single',
-    // },
 }
 module.exports = config;
