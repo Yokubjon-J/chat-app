@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require('webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const { module } = require("./webpack.config.server");
 const CURRENT_WORKING_DIR = process.cwd(); //console.log("xfdcx:\n", path.join(CURRENT_WORKING_DIR, 'client/main.js'));
 const config = {
     name: "browser",
@@ -49,11 +50,12 @@ const config = {
         },
     }
 }
-module.exports = (_, argv) => {
-    const mode = argv.mode;
-    const isDevelopment = mode === "development";
-    // process.env.NODE_ENV = "development";
-    return {
-      config
-    }
-};
+// module.exports = (_, argv) => {
+//     const mode = argv.mode;
+//     const isDevelopment = mode === "development";
+//     // process.env.NODE_ENV = "development";
+//     return {
+//       config
+//     }
+// };
+module.exports = config;
