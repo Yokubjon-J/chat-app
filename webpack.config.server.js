@@ -4,6 +4,7 @@ const nodeExternals = require('webpack-node-externals');
 const CURRENT_WORKING_DIR = process.cwd();
 const config = {
     name: "server",
+    mode: "development",
     entry: [path.join(CURRENT_WORKING_DIR, './server/server.js')],
     target: "node",
     output: {

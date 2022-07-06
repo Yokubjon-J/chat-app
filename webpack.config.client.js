@@ -50,12 +50,12 @@ const config = {
         },
     }
 }
-// module.exports = (_, argv) => {
-//     const mode = argv.mode;
-//     const isDevelopment = mode === "development";
-//     // process.env.NODE_ENV = "development";
-//     return {
-//       config
-//     }
-// };
-module.exports = config;
+module.exports = (_, argv) => {
+    const mode = argv.mode;
+    const isDevelopment = mode === "development";
+    // process.env.NODE_ENV = "development";
+    return {
+      config
+    }
+};
+// module.exports = config;
