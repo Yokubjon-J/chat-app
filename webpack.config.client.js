@@ -43,7 +43,7 @@ const config = {
     },
     plugins: [new ReactRefreshWebpackPlugin(), 'react-refresh/babel'],
     resolve: {
-        modules: ['client', 'node_modules'], // Assuming that your files are inside the src dir
+        //modules: ['client', 'node_modules'], // Assuming that your files are inside the src dir
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css', '.scss'],
         alias: {
             'react-dom': '@hot-loader/react-dom'
