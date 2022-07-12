@@ -2,7 +2,7 @@
   "name": "chat-app",
   "version": "1.0.0",
   "description": "",
-  "main": "template.js",
+  "main": "./server/server.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Yokubjon-J/chat-app.git"
