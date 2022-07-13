@@ -1,10 +1,12 @@
 const path = require("path");
 const webpack = require('webpack');
 const CURRENT_WORKING_DIR = process.cwd()
+
+let isDevelopment = process.env.NODE_ENV === "production";
 const config = {
     mode: "production",
     entry: [
-        path.join(CURRENT_WORKING_DIR, 'client/main.js')
+        path.join(CURRENT_WORKING_DIR, '/client/main.js')
     ],
     output: {
         path: path.join(CURRENT_WORKING_DIR, '/dist'),
@@ -23,10 +25,7 @@ const config = {
         ]
     }
 }
-module.exports = (_, argv) => {
-    const mode = argv.mode;
-    const isDevelopment = mode === "production";
-    return {
-      config
-    }
+module.exports = () => {
+    isDevelopment = process.env.NODE_ENV === "production";
+    return config
 };

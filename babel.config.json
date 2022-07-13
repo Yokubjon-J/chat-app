@@ -9,8 +9,8 @@
             }
         ],
         "@babel/preset-react" //needed for jsx transformation, etc.
-    ],
-    "plugins": [
-        "react-refresh/babel"
     ]
+    // "plugins": [
+    //     "react-refresh/babel"
+    // ]
 }
