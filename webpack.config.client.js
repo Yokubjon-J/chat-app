@@ -8,10 +8,7 @@ const config = {
     name: "browser",
     mode: "development",
     devtool: 'eval-source-map',
-    entry: [
-        'webpack-hot-middleware/client?reload=true',
-        path.join(CURRENT_WORKING_DIR, '/client/main.js')
-    ],
+    entry: "./client/main.js",
     output: {
         path: path.join(CURRENT_WORKING_DIR, '/dist/'),
         filename: 'bundle.js',
@@ -35,7 +32,6 @@ const config = {
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                // use: ['babel-loader'],
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -44,15 +40,15 @@ const config = {
                         ],
                         plugins: [isDevelopment && require.resolve('react-refresh/babel')].filter(Boolean),                        
                     },
-                // loader: 'babel-loader',
-                // options: {
-                //     plugins: [new ReactRefreshWebpackPlugin(), 'react-refresh/babel'],
-                // },
                 }
             }
         ]
     },
     plugins: [isDevelopment && new ReactRefreshWebpackPlugin()].filter(Boolean),
+    devServer:{
+        static: './dist',
+        hot: true,
+    },
     // resolve: {
     //     modules: ['client', 'node_modules'], // Assuming that your files are inside the src dir
     //     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css', '.scss'],

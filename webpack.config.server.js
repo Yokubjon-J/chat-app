@@ -24,9 +24,9 @@ const config = {
             }
         ]
     },
-    // devServer:{
-    //     static: './dist',
-    //     hot: true,
-    // },
+    devServer:{
+        static: './dist',
+        hot: true,
+    },
 }
 module.exports = config;
