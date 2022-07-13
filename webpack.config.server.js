@@ -6,12 +6,13 @@ const config = {
     name: "server",
     mode: "development",
     entry: [path.join(CURRENT_WORKING_DIR, './server/server.js')],
+    // entry:"./server/server.js",
     target: "node",
     output: {
-        path: path.join(CURRENT_WORKING_DIR, '/dist/'),
+        path: path.join(CURRENT_WORKING_DIR, './dist/'),
         filename: "server.generated.js",
-        publicPath: '/dist/',
-        // libraryTarget: "commonjs2",
+        publicPath: './dist/',
+        libraryTarget: "commonjs2",
         clean: true,
     },
     externals: [nodeExternals()],
@@ -24,9 +25,9 @@ const config = {
             }
         ]
     },
-    devServer:{
-        static: './dist',
-        hot: true,
-    },
+    // devServer:{
+    //     static: './dist',
+    //     hot: true,
+    // },
 }
 module.exports = config;
