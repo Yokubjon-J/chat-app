@@ -6,12 +6,12 @@ import webpackConfig from '../webpack.config.client.js';
 const webpackConfigReturned = webpackConfig();
 const compile = (app) => {
     if (process.env.NODE_ENV === "development") {
-        const compiler = webpack(webpackConfigReturned)
+        const compiler = webpack(webpackConfigReturned);
         const middleware = webpackMiddleware(compiler, {
             publicPath: webpackConfigReturned.output.publicPath,
-        })
-        app.use(middleware)
-        app.use(webpackHotMiddleware(compiler))
+        });
+        app.use(middleware);
+        app.use(webpackHotMiddleware(compiler));
     }
 }
 export default {

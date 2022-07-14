@@ -45,10 +45,6 @@ const config = {
         ]
     },
     plugins: [isDevelopment && new ReactRefreshWebpackPlugin()].filter(Boolean),
-    devServer:{
-        static: './dist',
-        hot: true,
-    },
     // resolve: {
     //     modules: ['client', 'node_modules'], // Assuming that your files are inside the src dir
     //     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css', '.scss'],

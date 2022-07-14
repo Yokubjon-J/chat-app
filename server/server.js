@@ -1,6 +1,6 @@
 import express from 'express';
 import devBundle from './devBundle.js';
-import template from './../template.js'
+import template from './../template.js';
 
 const app = express();
 devBundle.compile(app);

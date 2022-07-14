@@ -23,10 +23,6 @@ const config = {
                 use: ['babel-loader']
             }
         ]
-    },
-    devServer:{
-        static: './dist',
-        hot: true,
-    },
+    }
 }
 module.exports = config;
