@@ -1,10 +1,13 @@
 import React from 'react';
+import Container from '@mui/material/Container';
+import TabsMenu from './TabsMenu.jsx';
+
 const HelloWorld = () => {
     return (
-        <div>
-            <h1>Hello World!</h1>
-            <div>Mengu Tengri guyjinde</div>
-        </div>
+        <Container>
+            <TabsMenu/>
+        </Container>
     )
 }
+
 export default HelloWorld;
