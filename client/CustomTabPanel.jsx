@@ -1,10 +1,8 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-    console.log("ch: ", children)
     return (
       <div
         role="tabpanel"
@@ -15,7 +13,7 @@ function TabPanel(props) {
       >
         {value === index && (
           <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
+            <Box>{children}</Box>
           </Box>
         )}
       </div>

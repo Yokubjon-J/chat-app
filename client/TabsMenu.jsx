@@ -2,13 +2,13 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import TabPanel from './CustomTabPanel.jsx';
+import CreateRoomDialog from './CreateRoomDialog.jsx';
+import { Typography } from '@mui/material';
 
 const TabsMenu = () => {
     const [value, setValue] = React.useState(0);
     const handleChange = (event, newValue) => {
-        console.log("onch: ", newValue);
         setValue(newValue);
     };
     return (
@@ -21,13 +21,16 @@ const TabsMenu = () => {
             </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                Profile
+                <Typography>Profile</Typography>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Rooms
+                <Box>
+                    <CreateRoomDialog/>
+                </Box>
+                <Typography>Rooms</Typography>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                DMs
+                <Typography>DMs</Typography>
             </TabPanel>
         </Box>
     )
