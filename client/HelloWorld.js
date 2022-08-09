@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '@mui/material/Container';
 import TabsMenu from './TabsMenu.jsx';
+import RoomOne from './RoomOne.jsx';
 import {
     Routes,
     Route,
@@ -11,7 +12,9 @@ const HelloWorld = () => {
         <Routes>
             <Route path="/">
                 <Route path="profile" element={<p>stub 1</p>}></Route>
-                <Route path="rooms" element={<p>stub 2</p>}></Route>
+                <Route path="rooms" element={<p>stub 2</p>}>
+                    <Route path=":id" element={<RoomOne />} />
+                </Route>
                 <Route path="dms" element={<p>stub 3</p>}></Route>
                 <Route index element={<Container><TabsMenu/></Container>} />
             </Route>

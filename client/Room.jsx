@@ -5,6 +5,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Link } from "react-router-dom";
 
 const card = (
     <>
@@ -13,7 +14,7 @@ const card = (
           Word of the Day
         </Typography>
         <Typography variant="h5" component="div">
-          Room 1
+          <Link to="/rooms/1">Universal</Link>
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           Room activity
