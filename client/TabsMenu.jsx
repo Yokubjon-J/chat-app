@@ -5,6 +5,7 @@ import Tab from '@mui/material/Tab';
 import TabPanel from './CustomTabPanel.jsx';
 import CreateRoomDialog from './CreateRoomDialog.jsx';
 import { Typography } from '@mui/material';
+import Room from './Room.jsx';
 
 const TabsMenu = () => {
     const [value, setValue] = React.useState(0);
@@ -26,6 +27,7 @@ const TabsMenu = () => {
             <TabPanel value={value} index={1}>
                 <Box>
                     <CreateRoomDialog/>
+                    <Room/>
                 </Box>
                 <Typography>Rooms</Typography>
             </TabPanel>
