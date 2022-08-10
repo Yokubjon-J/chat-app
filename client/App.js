@@ -2,22 +2,20 @@ import React from 'react';
 import Container from '@mui/material/Container';
 import TabsMenu from './TabsMenu.jsx';
 import RoomOne from './RoomOne.jsx';
-import {
-    Routes,
-    Route,
-  } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 
 const HelloWorld = () => {
     return (
         <Routes>
-            <Route path="/">
+            <Route path="/" element={<div>Hi! <Outlet/></div>}>
                 <Route path="profile" element={<p>stub 1</p>}></Route>
-                <Route path="rooms" element={<p>stub 2</p>}>
+                <Route path="rooms" element={<div>stub 2<Outlet/></div>}>
                     <Route path=":id" element={<RoomOne />} />
                 </Route>
                 <Route path="dms" element={<p>stub 3</p>}></Route>
                 <Route index element={<Container><TabsMenu/></Container>} />
             </Route>
+            {/* <Route index element={<Container><TabsMenu/></Container>} /> */}
         </Routes>
     );
 }
