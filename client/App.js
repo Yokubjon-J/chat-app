@@ -5,6 +5,9 @@ import RoomOne from './RoomOne.jsx';
 import { Routes, Route, Outlet } from "react-router-dom";
 import { ThemeProvider } from '@mui/material/styles';
 import { CacheProvider } from '@emotion/react';
+import createEmotionCache from './styles/createEmotionCache';
+
+const cache = createEmotionCache();
 
 const HelloWorld = () => {
     React.useEffect(() => {

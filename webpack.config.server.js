@@ -21,26 +21,13 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
-                    options: {
-                        presets: [
-                            ['@babel/preset-env', { targets: "defaults" }]
-                        ],
-                        plugins: [isDevelopment && require.resolve('react-refresh/babel')].filter(Boolean),                        
-                    },
                 }
             }
         ]
-    },
-    devServer: {
-        historyApiFallback: {
-            rewrites: [
-                { from: "http://localhost:3000/rooms/one/", to: 'http://localhost:3000/' },
-              ],
-          }
     },
 }
 module.exports = config;
