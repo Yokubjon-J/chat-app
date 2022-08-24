@@ -22,6 +22,7 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/lab": "^5.0.0-alpha.92",
     "@mui/material": "^5.9.0",
+    "cors": "^2.8.5",
     "express": "^4.18.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",

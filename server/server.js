@@ -1,49 +1,58 @@
+import path from 'path'
 import React from 'react';
 import express from 'express';
 import devBundle from './devBundle.js';
 import template from './../template.js';
-import App from '../client/App.js';
+import Main from '../client/App.js';
 import createEmotionCache from '../client/styles/createEmotionCache';
 import theme from '../client/styles/theme';
 import ReactDOMServer from 'react-dom/server';
 import { ThemeProvider } from '@mui/material/styles';
 import { CacheProvider } from '@emotion/react';
 import createEmotionServer from '@emotion/server/create-instance';
+import { StaticRouter } from "react-router-dom/server";
+import cors from 'cors'
 
 const app = express();
 devBundle.compile(app);
 
 function renderFullPage(html, css) {
-    return template({html, css});
+    return template(html, css);
 }
 
 function handleRender(req, res) {
     const cache = createEmotionCache();
-    const { extractCriticalToChunks, constructStyleTagsFromChunks } =
-    createEmotionServer(cache);
+    const { extractCriticalToChunks, constructStyleTagsFromChunks } = createEmotionServer(cache);
 
     // Render the component to a string.
     const html = ReactDOMServer.renderToString(
-        <CacheProvider value={cache}>
-            <ThemeProvider theme={theme}>
-                {/* <CssBaseline /> */}
-                <App />
-            </ThemeProvider>
-        </CacheProvider>,
+        <StaticRouter location={req.url}>
+            <CacheProvider value={cache}>
+                <ThemeProvider theme={theme}>
+                    {/* <CssBaseline /> */}
+                    <Main />
+                </ThemeProvider>
+            </CacheProvider>
+        </StaticRouter>
     );
+
+    console.log("troublesome html: ", typeof html, html === '', req.url);
 
     // Grab the CSS from emotion
     const emotionChunks = extractCriticalToChunks(html);
     const emotionCss = constructStyleTagsFromChunks(emotionChunks);
 
     // Send the rendered page back to the client.
-    res.send(renderFullPage(html, emotionCss));
+    return res.send(renderFullPage(html, emotionCss));
 }
 
+app.use(cors());
+app.use('/dist', express.static(path.join(process.cwd(), 'dist')));
 app.use(handleRender);
 
 // app.get('*', (req, res) => {
-//     res.status(200).send(template());
+//     // res.status(200).send(template());
+//     handleRender(req, res);
 // });
 
 const port = process.env.PORT || 3000;
