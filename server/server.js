@@ -3,7 +3,7 @@ import React from 'react';
 import express from 'express';
 import devBundle from './devBundle.js';
 import template from './../template.js';
-import Main from '../client/App.js';
+import Main from '../client/ClientRoutes.jsx';
 import createEmotionCache from '../client/styles/createEmotionCache';
 import theme from '../client/styles/theme';
 import ReactDOMServer from 'react-dom/server';
@@ -36,8 +36,6 @@ function handleRender(req, res) {
         </StaticRouter>
     );
 
-    console.log("troublesome html: ", typeof html, html === '', req.url);
-
     // Grab the CSS from emotion
     const emotionChunks = extractCriticalToChunks(html);
     const emotionCss = constructStyleTagsFromChunks(emotionChunks);
@@ -48,12 +46,11 @@ function handleRender(req, res) {
 
 app.use(cors());
 app.use('/dist', express.static(path.join(process.cwd(), 'dist')));
-app.use(handleRender);
+// app.use(handleRender);
 
-// app.get('*', (req, res) => {
-//     // res.status(200).send(template());
-//     handleRender(req, res);
-// });
+app.get('*', (req, res) => {
+    handleRender(req, res);
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, function onStart(err) {

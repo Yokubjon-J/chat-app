@@ -1,6 +1,6 @@
 export default (markup, css) => {
-    console.log("XJ:", markup === '');
-    return 
+    
+    return markup !== '' &&
         `<!doctype html>
         <html lang="en">
             <head>
@@ -9,7 +9,7 @@ export default (markup, css) => {
             </head>
             <body>
                 <div id="root">${markup}</div>
-                <style id="jss-server-side">${css}</style>
+                ${css}
                 <script defer type="text/javascript" src="./dist/bundle.js"></script>
             </body>
         </html>`.trim();
