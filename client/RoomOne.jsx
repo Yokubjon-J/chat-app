@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import FolderIcon from '@mui/icons-material/Folder';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from "react-router-dom";
+import { WysiwygEditor } from '@remirror/react-editors/wysiwyg';
 
 function generate(element) {
     return [0, 1, 2].map((value) =>
@@ -59,6 +60,9 @@ const RoomOne = () => {
                     </List>
                 </Demo>
             </Grid>
+            <div style={{ padding: 16 }}>
+                <WysiwygEditor placeholder='Enter text...' />
+            </div>
         </Box>
     )
 }
