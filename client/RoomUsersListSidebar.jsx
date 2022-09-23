@@ -30,7 +30,17 @@ const RoomUsersListSidebar = () => {
     const [secondary, setSecondary] = React.useState(false);
 
     return (
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6}
+            sx={{
+                display: {
+                    xs: 'none',
+                    sm: 'inline',
+                    lg: 'inline',
+                },
+                maxWidth: 300,
+                height: 1
+            }}
+        >
             <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
                 Avatar with text and icon
             </Typography>

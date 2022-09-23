@@ -8,12 +8,24 @@ import Box from '@mui/material/Box';
 
 const RoomOne = () => {
     return (
-        <Box>
+        <Box sx={{display: 'flex', width: 1}}>
             <RoomUsersListSidebar/>
-            <Box></Box>
-            <div style={{ padding: 16 }}>
-                <WysiwygEditor placeholder='Enter text...' />
-            </div>
+
+            <Box sx={{display: 'block'}}> {/*Displayed always*/}
+                <div style={{ padding: 16 }}>
+                    <WysiwygEditor placeholder='Enter text...' />
+                </div>
+            </Box>
+
+            <Box sx={{
+                    display: {
+                        xs: 'none',
+                        sm: 'inline',
+                    },
+                    width: 1
+            }}>
+                Closable Info Bar
+            </Box>
         </Box>
     )
 }
