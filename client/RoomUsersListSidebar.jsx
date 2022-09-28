@@ -34,10 +34,10 @@ const RoomUsersListSidebar = () => {
             sx={{
                 display: {
                     xs: 'none',
-                    sm: 'inline',
+                    sm: 'block',
                     lg: 'inline',
                 },
-                maxWidth: 300,
+                minWidth: 300,
                 height: 1
             }}
         >

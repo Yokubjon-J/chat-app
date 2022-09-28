@@ -8,11 +8,15 @@ import Box from '@mui/material/Box';
 
 const RoomOne = () => {
     return (
-        <Box sx={{display: 'flex', width: 1}}>
+        <Box sx={{display: 'flex',}}>
             <RoomUsersListSidebar/>
 
-            <Box sx={{display: 'block'}}> {/*Displayed always*/}
-                <div style={{ padding: 16 }}>
+            <Box sx={{display: 'block', width: 1, height: '100vh'}}> {/*Displayed always*/}
+                <div style={{
+                    padding: 16,
+                    position: 'absolute',
+                    bottom: 0,
+                }}>
                     <WysiwygEditor placeholder='Enter text...' />
                 </div>
             </Box>
@@ -22,7 +26,7 @@ const RoomOne = () => {
                         xs: 'none',
                         sm: 'inline',
                     },
-                    width: 1
+                    maxWidth: 300,
             }}>
                 Closable Info Bar
             </Box>
