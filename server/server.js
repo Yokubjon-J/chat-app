@@ -11,7 +11,9 @@ import { ThemeProvider } from '@mui/material/styles';
 import { CacheProvider } from '@emotion/react';
 import createEmotionServer from '@emotion/server/create-instance';
 import { StaticRouter } from "react-router-dom/server";
-import cors from 'cors'
+import cors from 'cors';
+// import io from "socket.io";
+const { Server } = require('socket.io'); 
 
 const app = express();
 devBundle.compile(app);
@@ -53,9 +55,18 @@ app.get('*', (req, res) => {
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, function onStart(err) {
+const server = app.listen(port, function onStart(err) {
     if (err) {
         console.log("you got error");
     }
     console.info('Server started on port: ', port)
+});
+
+const io = new Server(server);
+const socketServer = io.listen(server);
+socketServer.on("connect", function (socket) {
+    console.log('&&$$@@@@@@@@@@@@@@@@@@@@@@!connected!#########################$$&&');
+    socket.on("incoming", data => {
+        console.log("incoming: ", data);
+    });
 });

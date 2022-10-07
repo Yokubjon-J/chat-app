@@ -31,6 +31,7 @@
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
     "remirror": "^1.0.89",
+    "socket.io": "^4.5.2",
     "socket.io-client": "^4.5.1",
     "uuid": "^8.3.2"
   },
