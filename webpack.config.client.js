@@ -46,6 +46,32 @@ const config = {
                 test: /\.css$/i,
                 use: ["style-loader", "css-loader"],
             },
+            // {
+            //     test: /\.css$/,
+            //     include: /node_modules/,
+            //     use: [
+            //         "style-loader",
+            //         { loader: "css-loader", options: { modules: true } }
+            //     ]
+            // },
+            // {
+            //     test: /\.css$/i,
+            //     oneOf: [
+            //       {
+            //         include: /node_modules/,
+            //         use: [
+            //           "style-loader",
+            //           { loader: "css-loader", options: { modules: true } }
+            //         ]
+            //       },
+            //       {
+            //         use: [
+            //           "style-loader",
+            //           "css-loader"
+            //         ]
+            //       }
+            //     ]
+            //   },
         ]
     },
     plugins: [isDevelopment && new ReactRefreshWebpackPlugin()].filter(Boolean),
