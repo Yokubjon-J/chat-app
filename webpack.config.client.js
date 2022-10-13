@@ -41,7 +41,11 @@ const config = {
                         plugins: [isDevelopment && require.resolve('react-refresh/babel')].filter(Boolean),                        
                     },
                 }
-            }
+            },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
         ]
     },
     plugins: [isDevelopment && new ReactRefreshWebpackPlugin()].filter(Boolean),

@@ -11,14 +11,15 @@ import 'remirror/styles/all.css';
 
 const RoomOne = () => {
 
-    const { manager, remirrorState, onChange } = useRemirror({
+    const { manager, state, onChange } = useRemirror({
         extensions: () => [
             new BoldExtension(), new ItalicExtension(),
             new ParagraphExtension, new HistoryExtension,
             new CalloutExtension({ defaultType: 'warn' }),
         ],
-        content: 'Type something...',
+        content: '<p>Type something...<p>',
         stringHandler: 'html',
+        selection: 'start',
     });
 
     const ImperativeHandle = forwardRef((_, ref) => {
@@ -54,7 +55,7 @@ const RoomOne = () => {
 
                     <ThemeProvider>
                         <div className='remirror-theme'>
-                        <Remirror manager={manager} initialContent={remirrorState} onChange={onChange} autoRender='end'>
+                        <Remirror autoRender={'start'} manager={manager} state={state} onChange={onChange} autoRender='end'>
                             <ImperativeHandle ref={editorRef} />
                         </Remirror>
                         </div>
