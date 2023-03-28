@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require('webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const CURRENT_WORKING_DIR = process.cwd();
+const nodeExternals = require('webpack-node-externals');
 
 let isDevelopment = process.env.NODE_ENV === "development";
 const config = {
@@ -43,7 +44,7 @@ const config = {
                 }
             },
             {
-                test: /\.css$/i,
+                test: /\.css$/,
                 use: ["style-loader", "css-loader"],
             },
             // {
@@ -74,6 +75,9 @@ const config = {
             //   },
         ]
     },
+    // externals: [nodeExternals({
+    //     allowlist: [/\.css$/i]
+    // })],
     plugins: [isDevelopment && new ReactRefreshWebpackPlugin()].filter(Boolean),
     // resolve: {
     //     modules: ['client', 'node_modules'], // Assuming that your files are inside the src dir

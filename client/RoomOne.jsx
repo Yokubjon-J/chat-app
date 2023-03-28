@@ -4,13 +4,15 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import { Link } from "react-router-dom";
 // import { WysiwygEditor } from '@remirror/react-editors/wysiwyg';
 import { BoldExtension, CalloutExtension, ItalicExtension, ParagraphExtension, HistoryExtension } from 'remirror/extensions';
-import { Remirror, ThemeProvider, useRemirror, useRemirrorContext } from '@remirror/react';
+import { Remirror, ThemeProvider, useRemirror, useRemirrorContext, EditorComponent } from '@remirror/react';
 import RoomUsersListSidebar from './RoomUsersListSidebar.jsx';
 import Box from '@mui/material/Box';
 import 'remirror/styles/all.css';
 
-const RoomOne = () => {
 
+const RoomOne = () => {
+    const Menu = () => <button onClick={() => alert('TBD')}>B</button>;
+    
     const { manager, state, onChange } = useRemirror({
         extensions: () => [
             new BoldExtension(), new ItalicExtension(),
@@ -55,8 +57,10 @@ const RoomOne = () => {
 
                     <ThemeProvider>
                         <div className='remirror-theme'>
-                        <Remirror autoRender={'start'} manager={manager} state={state} onChange={onChange} autoRender='end'>
+                        <Remirror manager={manager} state={state} onChange={onChange}>
                             <ImperativeHandle ref={editorRef} />
+                            <EditorComponent />
+                            <Menu />
                         </Remirror>
                         </div>
                     </ThemeProvider>

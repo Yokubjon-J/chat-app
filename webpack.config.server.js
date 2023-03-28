@@ -17,7 +17,9 @@ const config = {
         libraryTarget: "commonjs2",
         clean: true,
     },
-    externals: [nodeExternals()],
+    externals: [nodeExternals({
+        allowlist: [/\.css$/]
+    })],
     module: {
         rules: [
             {
@@ -28,7 +30,7 @@ const config = {
                 }
             },
             {
-                test: /\.css$/i,
+                test: /\.css$/,
                 use: ["style-loader", "css-loader"],
             },
             // {
